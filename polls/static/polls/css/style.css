@@ -1,0 +1,16 @@
+body{
+  background-image: url(../img/ovan.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.color{
+    color: white;
+}
+.card{
+    border-radius: 10px;
+}
+
+.img-thumbnail{
+    box-shadow: 10px -10px 25px black;
+}

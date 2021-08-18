@@ -1,0 +1,55 @@
+{% extends './baza.html' %}
+{% load static %}
+
+
+
+{% block sidebar-left %}
+
+{% for janr in janrlar %}
+<ol class="list-group">
+    <a class="fw-bold btn-outline-primary" href="{% url 'polls:kitoblar' janr.id %}" >
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      {{ janr.nomi }}
+
+    <span class="badge bg-danger">{{ count_book|time:"H:i" }}</span>
+        </div>
+  </li>
+    </a>
+</ol>
+    {% endfor %}
+
+
+{% endblock %}
+
+
+{% block main %}
+<h2>Cheksiz Samo! Cheksiz Kitoblar Samosi!</h2>
+<hr>
+{% for books in kitoblar %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{ books.rasm.url }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Nomi: {{books.nomi}}</h5>
+        <p class="card-text">Muallif: {{books.muallif}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+{% endfor %}
+
+{% for kitob in all_books %}
+<img class="img-thumbnail  rounded mx-auto d-block" src="{{ kitob.rasm.url }}" alt="">
+<h3> Kitob nomi: {{ kitob.nomi }}</h3>
+<p class="color">Muallif: {{ kitob.muallif }}</p>
+<!--<p class="color">Elektron versiya: <a href="{{ kitob.fayl.url }}" download>-->
+<!--    <button>Yuklab olish</button></a></p>-->
+<!--<p class="color">Nashr yili: {{ kitob.nashr_yili }} yil</p>-->
+<!--<p class="color">Sahifalar soni: {{ kitob.sahifalar }} bet</p>-->
+<hr>
+{% endfor %}
+{% endblock %}
+
